@@ -138,7 +138,68 @@ public class LinkedList
 	{
 		head = null;
 	}
-	 
+	// function to search for a node in the list
+	public boolean search(int key)
+	{
+		Node curr = head;
+		while (curr != null)
+		{
+			if (curr.data == key)
+				return true;
+			curr = curr.next;
+
+		}
+		return false;
+	}
+	
+	// return the node of n-th position
+	public int GetNth(int index)
+	{
+		Node curr = head;
+		int count = 0;
+		
+		while (curr != null)
+		{
+			if (count == index)
+				return curr.data;
+			count++;
+			curr = curr.next;
+		}
+		
+		assert(false);
+		return 0;	
+	}
+	
+	// sort the list
+	public void sortLinkedList() 
+	{
+		Node curr = head;
+		Node index = null;
+		int temp;
+		
+		if (head == null)
+			return;
+		else
+		{
+			while (curr != null)
+			{
+				index = curr.next;
+				while (index != null)
+				{
+					if (curr.data > index.data)
+					{
+						temp = curr.data;
+						curr.data = index.data;
+						index.data = temp;
+					}
+					index = index.next;
+				}
+				curr = curr.next;
+			}
+		}
+	}
+	
+	
 	public void printList()
 	{
 		Node n = head;
